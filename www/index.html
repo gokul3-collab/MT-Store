@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Buy premium comfort slippers at MT Store. Wide selection of affordable, high-quality slippers for men and women. Free delivery. Shop now!">
+    <meta name="keywords" content="slippers, comfortable slippers, premium slippers, shoes, affordable slippers, online shopping, buy slippers online">
+    <meta name="author" content="MT Store">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="MT Store - Premium Slippers & Comfort Shoes">
+    <meta property="og:description" content="Discover the most comfortable premium slippers at MT Store. Quality guaranteed with free delivery.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://mtstore.com/pic/slipper-banner.jpg">
+    <meta property="og:url" content="https://mtstore.com">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:title" content="MT Store - Premium Slippers">
+    <meta name="twitter:description" content="Shop premium comfort slippers at best prices with free delivery.">
+    <meta name="twitter:image" content="https://mtstore.com/pic/slipper-banner.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mtstore.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👟</text></svg>">
+    
+    <title>MT Store - Premium Slippers & Comfort Shoes | Best Prices</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Organization",
+      "name": "MT Store",
+      "alternateName": "MT-Store Premium Slippers",
+      "url": "https://mtstore.com",
+      "description": "Premium comfort slippers and shoes at affordable prices",
+      "logo": "https://mtstore.com/logo.png",
+      "sameAs": [
+        "https://www.facebook.com/mtstore",
+        "https://www.instagram.com/mtstore",
+        "https://www.whatsapp.com"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "telephone": "+91-9999999999",
+        "email": "info@mtstore.com"
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- ...existing code... -->
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <h1 class="logo">MT Store</h1>
+                <div class="header-right">
+                    <div class="cart-icon" id="cartIcon">
+                        <span class="cart-count" id="cartCount">0</span>
+                        🛒
+                    </div>
+                    <input type="text" class="search-box" id="searchBox" placeholder="Search slippers...">
+                </div>
+            </div>
+            <nav class="navbar">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#products" class="nav-link">Shop</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Welcome to MT Store</h2>
+            <p>Discover the Most Comfortable Shoes & Slippers in the World</p>
+            <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2>Our Premium Collection</h2>
+            <div class="filters">
+                <button class="filter-btn active" onclick="filterByPrice('all')">All</button>
+                <button class="filter-btn" onclick="filterByPrice('mid')">Mid-Range</button>
+                <button class="filter-btn" onclick="showSlipperPhoto()">Slipper Photo</button>
+                <!-- Slipper Photo Modal -->
+                <div class="image-modal" id="slipperPhotoModal" style="display:none;">
+                    <span class="close-btn" onclick="closeSlipperPhotoModal()">&times;</span>
+                    <div style="display: flex; align-items: center; justify-content: center; width: 100vw; height: 100vh;">
+                        <img class="modal-image" id="slipperPhotoImage" alt="Slipper Photo" style="display: block; margin: auto; max-width: 90vw; max-height: 90vh;">
+                    </div>
+                </div>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <span class="close-btn" onclick="closeCart()">&times;</span>
+            <h2>Shopping Cart</h2>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be displayed here -->
+            </div>
+            <div class="cart-summary">
+                <h3>Total: ₹<span id="cartTotal">0.00</span></h3>
+                <button class="btn btn-primary" onclick="checkout()">Checkout</button>
+            </div>
+            <!-- Location Add Point -->
+            <div class="cart-location" style="margin-top: 20px;">
+                <label for="cartLocation" style="font-weight: bold; display: block; margin-bottom: 8px;">Add Delivery Location</label>
+                <input type="text" id="cartLocation" placeholder="Enter your address or location" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 10px;" oninput="checkLocationAndToggleCheckout()">
+                <button class="btn btn-secondary" onclick="saveCartLocation()" style="width: 100%;">Save Location</button>
+                <div id="cartLocationSaved" style="color: green; margin-top: 8px; display: none;">Location saved!</div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full Screen Image Modal -->
+    <div class="image-modal" id="imageModal">
+        <span class="close-btn" onclick="closeImageModal()">&times;</span>
+        <img class="modal-image" id="modalImage" alt="Product Image">
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About MT Store</h4>
+                    <p>Your trusted destination for premium, comfortable slippers.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Shipping</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Return Request</h4>
+                    <select id="returnProductSelect" class="return-select">
+                        <option value="">Select product to return</option>
+                    </select>
+                    <button class="btn btn-return-footer" onclick="initiateReturnRequest()">Request Return</button>
+                    <p class="return-note">Easy returns within 30 days</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: info@mtstore.com</p>
+                    <p>Phone: 9999999999</p>
+                    <p>Address: sssssssssssssssssssssssss</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MT Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="whatsapp-config.js"></script>
+    <script src="app.js"></script>
+    <script>
+    function showSlipperPhoto() {
+        var modal = document.getElementById('slipperPhotoModal');
+        var img = document.getElementById('slipperPhotoImage');
+        img.src = 'photoslipper/WhatsApp Image 2026-02-26 at 10.20.58 PM.jpeg'; // Corrected filename
+        modal.style.display = 'flex';
+    }
+    function closeSlipperPhotoModal() {
+        document.getElementById('slipperPhotoModal').style.display = 'none';
+    }
+    </script>
+</body>
+</html>
