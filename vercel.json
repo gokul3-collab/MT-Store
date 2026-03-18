@@ -1,24 +1,4 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "server.js",
-      "use": "@vercel/node",
-      "config": { "zeroConfig": true }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "/www/static/$1"
-    },
-    {
-      "src": "/(.*\\.(?:css|js|webp|png|jpg|jpeg|gif|svg|ico|json))",
-      "dest": "/www/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/server.js"
-    }
-  ]
+  "public": "www"
 }
