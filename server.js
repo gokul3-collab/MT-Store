@@ -39,8 +39,14 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'www', 'index.html'));
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 MT Store Server running on port ${PORT}`);
-    console.log(`📍 Website: http://localhost:${PORT}`);
-    console.log(`🗺️  Sitemap: http://localhost:${PORT}/sitemap.xml`);
-});
+// Export for Vercel serverless
+module.exports = app;
+
+// For local development
+if (require.main === module) {
+    app.listen(PORT, '0.0.0.0', () => {
+        console.log(`🚀 MT Store Server running on port ${PORT}`);
+        console.log(`📍 Website: http://localhost:${PORT}`);
+        console.log(`🗺️  Sitemap: http://localhost:${PORT}/sitemap.xml`);
+    });
+}
